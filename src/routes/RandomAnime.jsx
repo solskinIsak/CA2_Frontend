@@ -1,23 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import facade from "../apiFacade.js";
+import {animeURL} from "../settings.js";
 
-
-const Joke = ({user}) => {
+const RandomAnime = ({user}) => {
 
 
     const [dataFromServer, setDataFromServer] = useState("")
-    const [joke, setJoke] = useState([])
+    const [anime, setAnime] = useState("")
+    const [update, setUpdate] = useState(false)
     let data = "";
 
+    const handleClick = () => {
+        setUpdate(!update)
+    }
 
     useEffect( () => {
         if(user.username === ''){ setDataFromServer('Please login to see data from server');
 
             return;
         }
-        fetch(ultimateJokeURL)
+        fetch(animeURL)
             .then(response => response.json())
-            .then(data =>setJoke(data.jokes)
+            .then(data =>setAnime(data)
 
             ).catch(err => {
                 console.error(err)
@@ -27,16 +31,17 @@ const Joke = ({user}) => {
 
             console.log(res);
             setDataFromServer(res.msg)});
-    },[user]);
+    },[update]);
 
     return (
         <div>
             {dataFromServer}
-            <h2>{"CHUCK JOKE:    "+ joke[0]}</h2>
-            <br/>
-            <h2>{"DAD JOKE:     "+ joke[1]}</h2>
+            <img src={anime.image_url} alt=""/>
+            <h2>{anime.title}</h2>
+            <button onClick={handleClick}>New Recommendation</button>
+
         </div>
     );
 };
 
-export default Joke;
+export default RandomAnime;

@@ -1,4 +1,4 @@
-import {baseURL, dadJokeURL} from "./settings.js";
+import {baseURL} from "./settings.js";
 function handleHttpErrors(res) {
  if (!res.ok) {
    return Promise.reject({ status: res.status, fullError: res.json() })

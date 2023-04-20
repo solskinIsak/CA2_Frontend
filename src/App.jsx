@@ -5,6 +5,7 @@ import About from "./routes/About.jsx";
 import Joke from "./routes/Joke.jsx";
 import {Route, Routes} from "react-router-dom";
 import Home from "./routes/Home.jsx";
+import RandomAnime from "./routes/RandomAnime.jsx";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/about" element={<About user={user} />}/>
         <Route path="/joke" element={<Joke user={user} />}/>
+        <Route path="/randomanime" element={<RandomAnime user={user} />}/>
       </Routes>
     </div>
   )
