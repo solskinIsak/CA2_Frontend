@@ -15,7 +15,7 @@ const RandomAnime = ({user}) => {
     }
 
     useEffect( () => {
-        if(user.username === ''){ setDataFromServer('Please login to see data from server');
+        if(user.username === ''){ setDataFromServer('Please login to see data from server ');
 
             return;
         }
